@@ -1,0 +1,14 @@
+Starting CAP Project Generator...
+Using @sap/cds-dk [7.7.1] from [/managed-content/globals/pnpm/5/.pnpm/@sap+cds-dk@7.7.1/node_modules/@sap/cds-dk]
+Using @sap/generator-cap-project [1.7.9] from [/managed-content/globals/pnpm/5/.pnpm/@sap+generator-cap-project@1.7.9/node_modules/@sap/generator-cap-project]
+Using root path [/home/user/projects]
+
+Creating project with mta, nodejs, pipeline
+Done creating project Expense_app
+
+
+Find samples on https://github.com/SAP-samples/cloud-cap-samples
+Learn about next steps at https://cap.cloud.sap
+For information on project "Piper" and its pipelines see https://sap.github.io/jenkins-library/
+
+Run npm update --package-lock-only to freeze dependencies.
