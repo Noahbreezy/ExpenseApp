@@ -31,6 +31,9 @@ CREATE TABLE `costs` (
   `status` enum('DRAFT','PENDING','APPROVED','REJECTED') DEFAULT 'DRAFT',
   `title` varchar(100) DEFAULT NULL,
   `feedback` varchar(1000) DEFAULT NULL,
+  `file1` varchar(1000) DEFAULT NULL,
+  `file2` varchar(1000) DEFAULT NULL,
+  `file3` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`cost_id`),
   KEY `fk_employee_costs` (`employee_id`),
   CONSTRAINT `fk_employee_costs` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE
