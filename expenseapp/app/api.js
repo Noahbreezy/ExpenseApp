@@ -13,39 +13,39 @@ app.use(morgan('dev'));
 const db = new ExpenseManager()
 
 app.post('/user/insertCost', async (req, res) => {
-    // Endpoint for adding a cost to the database
+    // Endpoint for adding a expense to the database
 })
 
 app.get('/user/getCost', async (req, res) => {
-    // Endpoint for getting a specific cost from the database
+    // Endpoint for getting a specific expense from the database
 })
 
 app.update('/user/updateCost', async (req, res) => {
-    // Endpoint for updating a cost in the database
+    // Endpoint for updating a expense in the database
 })
 
 app.delete('/user/deleteCost', async (req, res) => {
-    // Endpoint for deleting a cost from the database
+    // Endpoint for deleting a expense from the database
 })
 
 app. get('/admin/totalCost', async (req, res) => {
-    // Endpoint for getting total ever cost
+    // Endpoint for getting total ever expense
 })
 
 app.get('/admin/getEmployeeCost', async (req, res) => {
-    // Endpoint for getting all costs of an employee
+    // Endpoint for getting all expenses of an employee
 })
 
 app.get('/admin/getPendingCost', async (req, res) => {
-    // Endpoint for getting all pending costs
+    // Endpoint for getting all pending expenses
 })
 
 app.update('/admin/approveCost', async (req, res) => {
-    // Endpoint for approving a specific cost
+    // Endpoint for approving a specific expense
 })
 
 app.update('/admin/rejectCost', async (req, res) => {
-    // Endpoint for rejecting a specific cost
+    // Endpoint for rejecting a specific expense
 })
 
 app.get('/admin/getExpensesByPeriod', async (req, res) => {

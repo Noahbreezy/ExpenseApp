@@ -16,14 +16,15 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `costs`
+-- Table structure for table `expenses`
 --
 
 DROP TABLE IF EXISTS `costs`;
+DROP TABLE IF EXISTS `expenses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `costs` (
-  `cost_id` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `expenses` (
+  `expense_id` int NOT NULL AUTO_INCREMENT,
   `employee_id` int NOT NULL,
   `date` date NOT NULL,
   `amount` varchar(30) DEFAULT '0',
@@ -34,17 +35,17 @@ CREATE TABLE `costs` (
   `file1` varchar(1000) DEFAULT NULL,
   `file2` varchar(1000) DEFAULT NULL,
   `file3` varchar(1000) DEFAULT NULL,
-  PRIMARY KEY (`cost_id`),
+  PRIMARY KEY (`expense_id`),
   KEY `fk_employee_costs` (`employee_id`),
   CONSTRAINT `fk_employee_costs` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `costs`
+-- Dumping data for table `expenses`
 --
 
-LOCK TABLES `costs` WRITE;
+LOCK TABLES `expenses` WRITE;
 /*!40000 ALTER TABLE `costs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `costs` ENABLE KEYS */;
 UNLOCK TABLES;

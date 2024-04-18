@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 require('dotenv').config({path:''});
 
 class ExpenseManager {
@@ -23,48 +23,48 @@ class ExpenseManager {
     });
   }
 
-  // Insert a cost into the database
-  insertCost(employeeId, date, amount, description, title) {
-    const sql = "INSERT INTO costs (employee_id, date, amount, description, title) VALUES (?, ?, ?, ?, ?)";
+  // Insert a expense into the database
+  insertExpense(employeeId, date, amount, description, title) {
+    const sql = "INSERT INTO expenses (employee_id, date, amount, description, title) VALUES (?, ?, ?, ?, ?)";
     const args = [employeeId, date, amount, description, title];
     return this.query(sql, args);
   }
 
-  // Update a cost in the database
-  updateCost(costId, date, amount, description, title, status, feedback) {
-    const sql = "UPDATE costs SET date = ?, amount = ?, description = ?, title = ?, status = ?, feedback = ? WHERE cost_id = ?";
-    const args = [date, amount, description, title, status, feedback, costId];
+  // Update a expense in the database
+  updateExpense(expenseId, date, amount, description, title, status, feedback) {
+    const sql = "UPDATE expenses SET date = ?, amount = ?, description = ?, title = ?, status = ?, feedback = ? WHERE expense_id = ?";
+    const args = [date, amount, description, title, status, feedback, expenseId];
     return this.query(sql, args);
   }
 
-  // Delete a cost from the database
-  deleteCost(costId) {
-    const sql = "DELETE FROM costs WHERE cost_id = ?";
-    return this.query(sql, [costId]);
+  // Delete a expense from the database
+  deleteExpense(expenseId) {
+    const sql = "DELETE FROM expenses WHERE expense_id = ?";
+    return this.query(sql, [expenseId]);
   }
 
-  // Get all costs of a specific employee
-  getEmployeeCosts(employeeId) {
-    const sql = "SELECT * FROM costs WHERE employee_id = ?";
+  // Get all expenses of a specific employee
+  getEmployeeExpenses(employeeId) {
+    const sql = "SELECT * FROM expenses WHERE employee_id = ?";
     return this.query(sql, [employeeId]);
   }
 
-  // Get all costs awaiting approval
-  getPendingCosts() {
-    const sql = "SELECT * FROM costs WHERE status = 'PENDING'";
+  // Get all expenses awaiting approval
+  getPendingExpenses() {
+    const sql = "SELECT * FROM expenses WHERE status = 'PENDING'";
     return this.query(sql);
   }
 
-  // Approve a cost
-  approveCost(costId) {
-    const sql = "UPDATE costs SET status = 'APPROVED' WHERE cost_id = ?";
-    return this.query(sql, [costId]);
+  // Approve a expense
+  approvExpense(expenseId) {
+    const sql = "UPDATE expenses SET status = 'APPROVED' WHERE expense_id = ?";
+    return this.query(sql, [expenseId]);
   }
 
-  // Reject a cost
-  rejectCost(costId) {
-    const sql = "UPDATE costs SET status = 'REJECTED' WHERE cost_id = ?";
-    return this.query(sql, [costId]);
+  // Reject a expense
+  rejectExpense(expenseId) {
+    const sql = "UPDATE expenses SET status = 'REJECTED' WHERE expense_id = ?";
+    return this.query(sql, [expenseId]);
   }
 }
 
