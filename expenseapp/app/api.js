@@ -23,96 +23,96 @@ app.use(morgan('dev'));
 const db = new ExpenseManager();
 
 app.post('/api/upload', upload.single('file'), (req, res) => {
-    res.json(req.file);
+    res.status(200).json(req.file);
 });
 
-app.post('/user/insertCost', async (req, res) => {
+app.post('/user/insertExpense', async (req, res) => {
     const { employeeId, date, amount, description, title } = req.body;
     try {
-        await db.insertCost(employeeId, date, amount, description, title);
-        res.status(201).send("Cost inserted successfully.");
+        await db.insertExpense(employeeId, date, amount, description, title);
+        res.status(201).send("Expense inserted successfully.");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.get('/user/getCost', async (req, res) => {
+app.get('/user/getExpense', async (req, res) => {
     //check of userId is owner or has role admin
 
-    const { costId } = req.query;
+    const { expenseId } = req.query;
     try {
-        const result = await db.getEmployeeCosts(costId);
-        res.json(result);
+        const result = await db.getEmployeeExpenses(expenseId);
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.patch('/user/updateCost', async (req, res) => {
+app.patch('/user/updateExpense', async (req, res) => {
     //check of userId is owner or has role admin
 
-    const { costId, date, amount, description, title, status, feedback } = req.body;
+    const { expenseId, date, amount, description, title, status, feedback } = req.body;
     try {
-        await db.updateCost(costId, date, amount, description, title, status, feedback);
-        res.send("Cost updated successfully.");
+        await db.updateExpense(expenseId, date, amount, description, title, status, feedback);
+        res.status(200).send("Expense updated successfully.");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.delete('/user/deleteCost', async (req, res) => {
+app.delete('/user/deleteExpense', async (req, res) => {
   //check of userId is owner or has role admin
-    const { costId } = req.query;
+    const { expenseId } = req.query;
     try {
-        await db.deleteCost(costId);
-        res.send("Cost deleted successfully.");
+        await db.deleteExpense(expenseId);
+        res.status(200).send("Expense deleted successfully.");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.get('/admin/getEmployeeCost', async (req, res) => {
+app.get('/admin/getEmployeeExpense', async (req, res) => {
     //check of userId is owner 
 
     const { employeeId } = req.query;
     try {
-        const result = await db.getEmployeeCosts(employeeId);
-        res.json(result);
+        const result = await db.getEmployeeExpenses(employeeId);
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.get('/admin/getPendingCost', async (req, res) => {
+app.get('/admin/getPendingExpense', async (req, res) => {
     //check has role admin
 
     try {
-        const result = await db.getPendingCosts();
-        res.json(result);
+        const result = await db.getPendingExpenses();
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.patch('/admin/approveCost', async (req, res) => {
+app.patch('/admin/approveExpense', async (req, res) => {
     //check  has role admin
 
-    const { costId } = req.body;
+    const { expenseId } = req.body;
     try {
-        await db.approveCost(costId);
-        res.send("Cost approved successfully.");
+        await db.approveExpense(expenseId);
+        res.status(200).send("Expense approved successfully.");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 });
 
-app.patch('/admin/rejectCost', async (req, res) => {
+app.patch('/admin/rejectExpense', async (req, res) => {
     //check has role admin
 
-    const { costId } = req.body;
+    const { expenseId } = req.body;
     try {
-        await db.rejectCost(costId);
-        res.send("Cost rejected successfully.");
+        await db.rejectExpense(expenseId);
+        res.status(200).send("Expense rejected successfully.");
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -124,7 +124,7 @@ app.get('/admin/getExpensesByPeriod', async (req, res) => {
     try {
         // Assuming there's a method in ExpenseManager for this query
         const result = await db.getExpensesByPeriod(startDate, endDate);
-        res.json(result);
+        res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
