@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const mysql = require('mysql2');
 require('dotenv').config({path:''});
 
 class ExpenseManager {
@@ -65,6 +65,18 @@ class ExpenseManager {
   rejectExpense(expenseId) {
     const sql = "UPDATE expenses SET status = 'REJECTED' WHERE expense_id = ?";
     return this.query(sql, [expenseId]);
+  }
+
+  checkEmployeeInCost(costId, employeeId) {
+    const sql = "SELECT EXISTS (SELECT 1 FROM costs WHERE cost_id = ? AND employee_id = ?) AS exist";
+    const args = [costId, employeeId];
+    return this.query(sql, args).then(rows => rows[0].exist === 1);
+  }
+
+  checkEmployeeRank(employeeId) {
+    const sql = "SELECT EXISTS (SELECT 1 FROM employees WHERE employee_id = ? AND employee_rank = 1) AS exist";
+    const args = [employeeId];
+    return this.query(sql, args).then(rows => rows[0].exist === 1);
   }
 }
 
