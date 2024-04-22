@@ -36,8 +36,8 @@ CREATE TABLE `expenses` (
   `file2` varchar(1000) DEFAULT NULL,
   `file3` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`expense_id`),
-  KEY `fk_employee_costs` (`employee_id`),
-  CONSTRAINT `fk_employee_costs` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE
+  KEY `fk_employee_expenses` (`employee_id`),
+  CONSTRAINT `fk_employee_expenses` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`employee_id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
