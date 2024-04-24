@@ -1,0 +1,4 @@
+@server=http://localhost:4004
+@service=/odata/v4/expense
+
+GET {{server}}{{service}}/Expenses
