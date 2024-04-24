@@ -9,6 +9,7 @@ entity Employees {
   employee_iban : String(34);
   employee_rank : Integer;
   employee_mail : String(100);
+  employee_password : String(100);
 }
 
 type ExpenseStatus : String enum {
