@@ -28,8 +28,9 @@
   },
   "cds": {
     "requires": {
-      "db": "hana",
-      "multitenancy": true
+      "db": {
+        "kind":"sqlite",
+      "credentials": {"url": "db/expenseDB"  }}
     },
     "profile": "with-mtx-sidecar"
   },
