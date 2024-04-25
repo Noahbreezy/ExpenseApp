@@ -20,7 +20,7 @@ entity Expenses : managed {
   key expense_id : Integer;
   employee : Association to Employees;
   date : Date;
-  amount : String(30);
+  amount : Double;
   description : String(1000);
   title : String(100);
   feedback : String(1000);

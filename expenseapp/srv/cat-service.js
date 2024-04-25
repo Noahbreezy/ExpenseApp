@@ -9,9 +9,9 @@ module.exports = (srv) => {
   
     // Reply mock data for Expenses...
     srv.on('READ', 'Expenses', () => [
-      { expense_id: 101, employee_ID: 1, date: '2021-04-01', amount: '150.00', description: 'Business trip to Berlin', title: 'Berlin Trip', feedback: 'Approved', status: 'APPROVED', file1: 'berlin_trip_receipt.pdf', file2: 'berlin_trip_invoice.pdf', file3: 'berlin_trip_summary.pdf' },
-      { expense_id: 102, employee_ID: 2, date: '2021-04-15', amount: '450.00', description: 'Office equipment', title: 'Office Supplies', feedback: 'Pending approval', status: 'PENDING', file1: 'office_supplies_receipt.pdf', file2: 'office_supplies_invoice.pdf', file3: null },
-      { expense_id: 103, employee_ID: 3, date: '2021-05-10', amount: '200.00', description: 'Client entertainment expenses', title: 'Client Meeting', feedback: 'Needs more documentation', status: 'REJECTED', file1: 'client_meeting_receipt.pdf', file2: null, file3: null }
+      { expense_id: 1, employee: 1, date: '2021-04-01', amount: 150.00, description: 'Business trip to Berlin', title: 'Berlin Trip', feedback: 'Approved', status: 'APPROVED', file1: 'berlin_trip_receipt.pdf', file2: 'berlin_trip_invoice.pdf', file3: 'berlin_trip_summary.pdf' },
+      { expense_id: 2, employee: 2, date: '2021-04-15', amount: 450.00, description: 'Office equipment', title: 'Office Supplies', feedback: 'Pending approval', status: 'PENDING', file1: 'office_supplies_receipt.pdf', file2: 'office_supplies_invoice.pdf', file3: null },
+      { expense_id: 3, employee: 3, date: '2021-05-10', amount: 200.00, description: 'Client entertainment expenses', title: 'Client Meeting', feedback: 'Needs more documentation', status: 'REJECTED', file1: 'client_meeting_receipt.pdf', file2: null, file3: null }
     ]);
   
   }

@@ -30,7 +30,7 @@
     "requires": {
       "db": {
         "kind":"sqlite",
-      "credentials": {"url": "db/expenseDB"  }}
+      "credentials": {"url": "db/expenseDB.sqlite"  }}
     },
     "profile": "with-mtx-sidecar"
   },

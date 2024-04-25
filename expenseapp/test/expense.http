@@ -2,3 +2,22 @@
 @service=/odata/v4/expense
 
 GET {{server}}{{service}}/Expenses
+
+###
+POST {{server}}{{service}}/Expenses
+    Content-Type: application/json
+    
+     {
+        "date": "2024-04-24",
+        "amount": 100.50,
+        "status": "Draft",
+        "description": "Purchase of printer paper and ink cartridges",
+        "employee": 1,
+        "title":"Purchase Printer"
+     }
+
+###
+GET {{server}}{{service}}/Expenses/1
+
+
+    
