@@ -1,43 +1,52 @@
 {
-  "name": "expenseapp",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": {
-    "type": "git",
-    "url": "<Add your repository here>"
-  },
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/cds-mtxs": "^1.9",
-    "dotenv": "^16.4.5",
-    "express": "^4.19.2",
-    "fs": "^0.0.1-security",
-    "https": "^1.0.0",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.5-lts.1"
-  },
-  "devDependencies": {
-    "@cap-js/sqlite": "^1.6.0",
-    "@sap/cds-dk": "^7"
-  },
-  "scripts": {
-    "start": "cds-serve"
-  },
-  "cds": {
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "credentials": {
-          "url": "db/expenseDB.sqlite"
-        }
-      }
+    "name": "expenseapp",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": {
+        "type": "git",
+        "url": "<Add your repository here>"
     },
-    "profile": "with-mtx-sidecar"
-  },
-  "main": "index.js",
-  "keywords": [],
-  "author": ""
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/cds-mtxs": "^1.9",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "fs": "^0.0.1-security",
+        "https": "^1.0.0",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1"
+    },
+    "devDependencies": {
+        "@cap-js/sqlite": "^1.6.0",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.8",
+        "rimraf": "^3.0.2"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-expense_app": "cds watch --open expense_app/webapp/index.html?sap-ui-xx-viewCache=false",
+        "undeploy": "cf undeploy expenseapp --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "cds": {
+        "requires": {
+            "db": {
+                "kind": "sqlite",
+                "credentials": {
+                    "url": "db/expenseDB.sqlite"
+                }
+            }
+        },
+        "profile": "with-mtx-sidecar"
+    },
+    "main": "index.js",
+    "keywords": [],
+    "author": "",
+    "sapux": [
+        "app/expense_app"
+    ]
 }

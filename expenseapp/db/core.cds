@@ -1,7 +1,8 @@
+using { managed } from '@sap/cds/common';
+
 namespace expenseApp;
 
-using { managed } from '@sap/cds/common';
-/*  adds standard fields such as createdAt, createdBy, modifiedAt, and modifiedBy automatically to your entity. This is useful for tracking entity life cycles in SAP applications.*/
+@odata.draft.enabled
 entity Employees {
   key employee_id : Integer;
   employee_surname : String(50);
@@ -16,6 +17,7 @@ type ExpenseStatus : String enum {
     DRAFT; PENDING; APPROVED; REJECTED;
 }
 
+@odata.draft.enabled
 entity Expenses : managed {
   key expense_id : Integer;
   employee : Association to Employees;
@@ -28,4 +30,8 @@ entity Expenses : managed {
   file1 : String(1000);
   file2 : String(1000);
   file3 : String(1000);
+
+
 }
+
+

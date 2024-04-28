@@ -1,68 +1,115 @@
-_schema-version: '3.1'
+_schema-version: "3.1"
 ID: expenseapp
+description: A simple CAP project.
 version: 1.0.0
-description: "A simple CAP project."
+modules:
+- name: expenseapp-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: expenseapp-db
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+  build-parameters:
+    builder: npm
+- name: expenseapp-mtx
+  type: nodejs
+  path: gen/mtx/sidecar
+  requires:
+  - name: expenseapp-db
+  provides:
+  - name: mtx-api
+    properties:
+      mtx-url: ${default-url}
+  parameters:
+    disk-quota: 512M
+    memory: 256M
+  build-parameters:
+    builder: npm-ci
+- name: expenseapp-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: expenseapp-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - artifacts:
+      - expenseappexpenseapp.zip
+      name: expenseappexpenseapp
+      target-path: resources/
+- name: expenseappexpenseapp
+  type: html5
+  path: app/expense_app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: expenseapp-registry
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      appName: expenseapp-${org}-${space}
+      appUrls:
+        callbackTimeoutMillis: 300000
+        getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
+        onSubscription: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/tenant/{tenantId}
+        onSubscriptionAsync: true
+        onUnSubscriptionAsync: true
+        onUpdateDependenciesAsync: true
+      category: Category
+      description: A simple CAP project.
+      displayName: expenseapp
+      xsappname: expenseapp-${org}-${space}
+    service: saas-registry
+    service-plan: application
+  requires:
+  - name: mtx-api
+- name: expenseapp-db
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: service-manager
+    service-plan: container
+- name: expenseapp-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: expenseapp-html5-srv
+    service-plan: app-host
+- name: expenseapp-destination-service
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: false
+      init_data:
+        instance:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: ui5
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://ui5.sap.com
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: expenseapp-destination-service
+    service-plan: lite
 parameters:
+  deploy_mode: html5-repo
   enable-parallel-deployments: true
 build-parameters:
   before-all:
-    - builder: custom
-      commands:
-        - npm ci
-        - npx cds build --production
-modules:
-  - name: expenseapp-srv
-    type: nodejs
-    path: gen/srv
-    parameters:
-      buildpack: nodejs_buildpack
-    build-parameters:
-      builder: npm
-    provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
-        properties:
-          srv-url: ${default-url}
-    requires:
-      - name: expenseapp-db
-
-  - name: expenseapp-mtx
-    type: nodejs
-    path: gen/mtx/sidecar
-    build-parameters:
-      builder: npm-ci
-    parameters:
-      memory: 256M
-      disk-quota: 512M
-    provides:
-      - name: mtx-api
-        properties:
-          mtx-url: ${default-url}
-    requires:
-      - name: expenseapp-db
-
-resources:
-  - name: expenseapp-registry
-    type: org.cloudfoundry.managed-service
-    requires:
-      - name: mtx-api
-    parameters:
-      service: saas-registry
-      service-plan: application
-      config:
-        xsappname: expenseapp-${org}-${space}
-        appName: expenseapp-${org}-${space}
-        displayName: expenseapp
-        description: A simple CAP project.
-        category: 'Category'
-        appUrls:
-          getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
-          onSubscription: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/tenant/{tenantId}
-          onSubscriptionAsync: true
-          onUnSubscriptionAsync: true
-          onUpdateDependenciesAsync: true
-          callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
-  - name: expenseapp-db
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: service-manager
-      service-plan: container
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production
