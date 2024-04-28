@@ -1,6 +1,0 @@
-employee_id,employee_surname,employee_name,employee_iban,employee_rank,employee_mail,employee_password
-1,Surname1,Name1,DE468418154505308229,3,user1@example.com,password123
-2,Surname2,Name2,DE721462254355221896,5,user2@example.com,password123
-3,Surname3,Name3,DE849321719817207548,4,user3@example.com,password123
-4,Surname4,Name4,DE524209323163249590,1,user4@example.com,password123
-5,Surname5,Name5,DE508513775514701014,2,user5@example.com,password123

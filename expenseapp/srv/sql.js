@@ -3,15 +3,26 @@ const { SELECT, INSERT, UPDATE, DELETE } = cds.ql;
 const { Expenses, Employees } = cds.entities;
 
 // Insert an expense into the database
+// const insertExpense = (employeeId, date, amount, description, title) => {
+//     return INSERT.into(Expenses).entries({
+//         employee_id: employeeId,
+//         date: date,
+//         amount: amount,
+//         description: description,
+//         title: title
+//     });
+// };
+
 const insertExpense = (employeeId, date, amount, description, title) => {
     return INSERT.into(Expenses).entries({
-        employee_ID: employeeId,
+        employee_id: employeeId,  // Adjusted from 'employee' to 'employee_id'
         date: date,
         amount: amount,
         description: description,
         title: title
     });
 };
+
 
 // Update an expense in the database
 const updateExpense = (expenseId, date, amount, description, title, status, feedback) => {
@@ -32,7 +43,7 @@ const deleteExpense = expenseId => {
 
 // Get all expenses of a specific employee
 const getEmployeeExpenses = employeeId => {
-    return SELECT.from(Expenses).where({ employee_ID: employeeId });
+    return SELECT.from(Expenses).where({ employee_id: employeeId });
 };
 
 // Get all expenses awaiting approval
@@ -52,12 +63,12 @@ const rejectExpense = expenseId => {
 
 // Check if a specific employee ID exists in a specific cost ID
 const checkEmployeeInCost = (costId, employeeId) => {
-    return SELECT.one(Expenses).columns(['1 as exist']).where({ expense_ID: costId, employee_ID: employeeId });
+    return SELECT.one(Expenses).columns(['1 as exist']).where({ expense_ID: costId, employee_id: employeeId });
 };
 
 // Check if the row with the specific employee ID has an employee rank of 1
 const checkEmployeeRank = employeeId => {
-    return SELECT.one(Employees).columns(['1 as exist']).where({ employee_ID: employeeId, employee_rank: 1 });
+    return SELECT.one(Employees).columns(['1 as exist']).where({ employee_id: employeeId, employee_rank: 1 });
 };
 
 module.exports = {

@@ -1,0 +1,21 @@
+expense_id,employee_employee_id,date,amount,description,title,feedback,status,file1,file2,file3
+1,5,2023-12-26,336.8,Expense for project 1,Project Expense 1,Needs more documentation,REJECTED,receipt1.pdf,invoice1.pdf,report1.pdf
+2,3,2023-12-02,98.53,Expense for project 2,Project Expense 2,Well documented,APPROVED,receipt2.pdf,invoice2.pdf,report2.pdf
+3,5,2023-09-04,286.01,Expense for project 3,Project Expense 3,Needs more documentation,PENDING,receipt3.pdf,invoice3.pdf,report3.pdf
+4,4,2023-09-30,456.87,Expense for project 4,Project Expense 4,Well documented,PENDING,receipt4.pdf,invoice4.pdf,report4.pdf
+5,3,2023-12-16,94.75,Expense for project 5,Project Expense 5,Needs more documentation,PENDING,receipt5.pdf,invoice5.pdf,report5.pdf
+6,3,2023-12-16,239.96,Expense for project 6,Project Expense 6,Well documented,PENDING,receipt6.pdf,invoice6.pdf,report6.pdf
+7,5,2023-11-07,440.22,Expense for project 7,Project Expense 7,Needs more documentation,PENDING,receipt7.pdf,invoice7.pdf,report7.pdf
+8,2,2024-02-14,453.14,Expense for project 8,Project Expense 8,Well documented,APPROVED,receipt8.pdf,invoice8.pdf,report8.pdf
+9,5,2023-08-26,108.36,Expense for project 9,Project Expense 9,Needs more documentation,PENDING,receipt9.pdf,invoice9.pdf,report9.pdf
+10,1,2023-10-30,355.44,Expense for project 10,Project Expense 10,Well documented,DRAFT,receipt10.pdf,invoice10.pdf,report10.pdf
+11,5,2023-10-17,123.88,Expense for project 11,Project Expense 11,Needs more documentation,DRAFT,receipt11.pdf,invoice11.pdf,report11.pdf
+12,1,2024-01-29,113.83,Expense for project 12,Project Expense 12,Well documented,REJECTED,receipt12.pdf,invoice12.pdf,report12.pdf
+13,1,2024-02-20,409.71,Expense for project 13,Project Expense 13,Needs more documentation,DRAFT,receipt13.pdf,invoice13.pdf,report13.pdf
+14,1,2023-09-09,330.53,Expense for project 14,Project Expense 14,Well documented,PENDING,receipt14.pdf,invoice14.pdf,report14.pdf
+15,4,2023-05-13,441.55,Expense for project 15,Project Expense 15,Needs more documentation,REJECTED,receipt15.pdf,invoice15.pdf,report15.pdf
+16,1,2024-02-10,90.38,Expense for project 16,Project Expense 16,Well documented,PENDING,receipt16.pdf,invoice16.pdf,report16.pdf
+17,5,2023-09-27,365.31,Expense for project 17,Project Expense 17,Needs more documentation,REJECTED,receipt17.pdf,invoice17.pdf,report17.pdf
+18,4,2024-01-15,122.98,Expense for project 18,Project Expense 18,Well documented,APPROVED,receipt18.pdf,invoice18.pdf,report18.pdf
+19,1,2024-04-15,459.25,Expense for project 19,Project Expense 19,Needs more documentation,REJECTED,receipt19.pdf,invoice19.pdf,report19.pdf
+20,4,2023-05-01,471.47,Expense for project 20,Project Expense 20,Well documented,APPROVED,receipt20.pdf,invoice20.pdf,report20.pdf
