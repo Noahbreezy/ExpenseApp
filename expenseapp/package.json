@@ -30,7 +30,8 @@
         "watch-expense_app": "cds watch --open expense_app/webapp/index.html?sap-ui-xx-viewCache=false",
         "undeploy": "cf undeploy expenseapp --delete-services --delete-service-keys --delete-service-brokers",
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
-        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+        "watch-approvals": "cds watch --open approvals/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "requires": {
@@ -47,6 +48,7 @@
     "keywords": [],
     "author": "",
     "sapux": [
-        "app/expense_app"
+        "app/expense_app",
+        "app/approvals"
     ]
 }

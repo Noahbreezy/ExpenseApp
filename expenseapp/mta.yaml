@@ -44,9 +44,23 @@ modules:
       - expenseappexpenseapp.zip
       name: expenseappexpenseapp
       target-path: resources/
+    - artifacts:
+      - expenseappapprovals.zip
+      name: expenseappapprovals
+      target-path: resources/
 - name: expenseappexpenseapp
   type: html5
   path: app/expense_app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: expenseappapprovals
+  type: html5
+  path: app/approvals
   build-parameters:
     build-result: dist
     builder: custom
