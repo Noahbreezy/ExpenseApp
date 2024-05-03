@@ -30,8 +30,6 @@ entity Expenses : managed {
   file1 : String(1000);
   file2 : String(1000);
   file3 : String(1000);
-
-
 }
 
 

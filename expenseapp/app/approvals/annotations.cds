@@ -1,4 +1,5 @@
 using ExpenseService as service from '../../srv/expense';
+
 annotate service.Expenses with @(
     UI.LineItem : [
         {
@@ -8,8 +9,8 @@ annotate service.Expenses with @(
         },
         {
             $Type : 'UI.DataField',
-            Label : 'employee_employee_id',
-            Value : employee_employee_id,
+            Label : 'Owner',
+            Value : employee.employee_name,  // Assuming 'employee' is the navigation property and 'employee_name' is the field
         },
         {
             $Type : 'UI.DataField',
@@ -25,6 +26,14 @@ annotate service.Expenses with @(
             $Type : 'UI.DataField',
             Label : 'description',
             Value : description,
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Status',
+            Value : status,
+            Criticality : status,
+            CriticalityRepresentation : #WithIcon,
+            ![@UI.Importance] : #High,
         },
     ]
 );
