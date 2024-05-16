@@ -52,6 +52,10 @@ modules:
       - expenseappdashboard.zip
       name: expenseappdashboard
       target-path: resources/
+    - artifacts:
+      - expenseappviewexpenses.zip
+      name: expenseappviewexpenses
+      target-path: resources/
 - name: expenseappexpenseapp
   type: html5
   path: app/expense_app
@@ -75,6 +79,16 @@ modules:
 - name: expenseappdashboard
   type: html5
   path: app/dashboard
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: expenseappviewexpenses
+  type: html5
+  path: app/view_expenses
   build-parameters:
     build-result: dist
     builder: custom

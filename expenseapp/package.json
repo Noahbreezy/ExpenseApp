@@ -22,7 +22,7 @@
     "devDependencies": {
         "@cap-js/sqlite": "^1.6.0",
         "@sap/cds-dk": "^7",
-        "@sap/ux-specification": "^1.120.8",
+        "@sap/ux-specification": "^1.84.87",
         "rimraf": "^3.0.2"
     },
     "scripts": {
@@ -32,7 +32,8 @@
         "build": "rimraf resources mta_archives && mbt build --mtar archive",
         "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
         "watch-approvals": "cds watch --open approvals/webapp/index.html?sap-ui-xx-viewCache=false",
-        "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false"
+        "watch-dashboard": "cds watch --open dashboard/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-view_expenses": "cds watch --open view_expenses/webapp/index.html?sap-ui-xx-viewCache=false"
     },
     "cds": {
         "requires": {
@@ -51,6 +52,7 @@
     "sapux": [
         "app/expense_app",
         "app/approvals",
-        "app/dashboard"
+        "app/dashboard",
+        "app/view_expenses"
     ]
 }
